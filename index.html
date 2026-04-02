@@ -4,167 +4,180 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foxxy & Uwaw Store</title>
-    <!-- Ganti script Tailwind dengan versi ini -->
     <script src="https://tailwindcss.com"></script>
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
-        /* CSS Cadangan jika Tailwind telat load */
         body {
-            background-color: #0a0a0a !important;
-            color: white;
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 20px;
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e2e8e0;
         }
-        .glow-text {
+        .font-brand { font-family: 'Orbitron', sans-serif; }
+        .glow-blue {
+            text-shadow: 0 0 12px rgba(59, 130, 246, 0.8);
             color: #3b82f6;
-            text-shadow: 0 0 15px rgba(59, 130, 246, 0.9);
         }
-        .glow-border {
-            border: 1px solid #3b82f6 !important;
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            background: #18181b;
+        .card-neon {
+            background: #111111;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            transition: all 0.3s ease;
+        }
+        .card-neon:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.15);
+        }
+        /* Tombol WA Chat */
+        .btn-wa {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        }
+        /* Tombol Grup JB - Warna Biru Muda/Cyan agar beda */
+        .btn-grup {
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
         }
         .hidden-section { display: none; }
-        button {
-            background: #2563eb;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
+        .qris-img {
+            max-width: 200px; /* Diperkecil lagi agar lebih pas di layar HP kecil */
             width: 100%;
-            font-weight: bold;
+            height: auto;
+            border-radius: 8px;
         }
     </style>
 </head>
-<body class="min-h-screen p-6 md:p-12">
+<body class="min-h-screen p-5 md:p-10">
 
-    <!-- HALAMAN UTAMA -->
-    <div id="main-page" class="max-w-4xl mx-auto mt-10">
-        <h1 class="text-4xl md:text-6xl font-bold glow-text mb-2 text-blue-500">Foxxy & Uwaw Store</h1>
-        
-        <div class="mb-10 ml-1">
-            <p class="text-gray-400 text-sm md:text-base leading-relaxed">
+    <!-- 1. HALAMAN UTAMA -->
+    <div id="main-page" class="max-w-md mx-auto pt-10">
+        <h1 class="text-3xl font-brand glow-blue mb-2">Foxxy & Uwaw Store</h1>
+        <div class="mb-10">
+            <p class="text-gray-400 text-sm leading-relaxed">
                 Melayani segala produk digital, mulai dari :<br>
-                - All APK Prem & Kebutuhan Sosmed<br>
-                - Top Up Games & Kebutuhan Editing<br>
-                - Paid Edit & Kebutuhan Bot WA<br>
-                - Jasa Sewa Bot Grup, dll.
+                <span class="text-xs">
+                - all apk prem, kebutuhan sosmed, top up games, paid edit, bot wa, jasa sewa bot grup, dll.
+                </span>
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Menu Jenis Produk -->
-            <div class="p-6 bg-zinc-900 rounded-2xl glow-border">
-                <h2 class="text-xl font-semibold mb-4">Jenis Produk</h2>
-                <button onclick="showSection('product-page')" class="w-full py-2 bg-blue-600 hover:bg-blue-500 rounded-lg font-medium btn-glow">Lihat</button>
+        <div class="space-y-5">
+            <div class="p-6 card-neon rounded-3xl">
+                <h2 class="text-lg font-bold mb-4 flex items-center gap-2">📦 Jenis Produk</h2>
+                <button onclick="showSection('product-page')" class="w-full py-3 bg-blue-600 hover:bg-blue-500 rounded-2xl font-bold transition shadow-lg active:scale-95">Lihat</button>
             </div>
 
-            <!-- Menu Dev & Owner -->
-            <div class="p-6 bg-zinc-900 rounded-2xl glow-border">
-                <h2 class="text-xl font-semibold mb-4">Developer & Owner</h2>
-                <button onclick="showSection('contact-page')" class="w-full py-2 bg-blue-600 hover:bg-blue-500 rounded-lg font-medium btn-glow">Lihat</button>
+            <div class="p-6 card-neon rounded-3xl">
+                <h2 class="text-lg font-bold mb-4 flex items-center gap-2">👥 Dev & Owner</h2>
+                <button onclick="showSection('contact-page')" class="w-full py-3 bg-blue-600 hover:bg-blue-500 rounded-2xl font-bold transition shadow-lg active:scale-95">Lihat</button>
             </div>
         </div>
     </div>
 
-    <!-- HALAMAN KONTAK (DEV & OWNER) -->
-    <div id="contact-page" class="max-w-2xl mx-auto mt-10 hidden-section">
-        <button onclick="showSection('main-page')" class="mb-6 text-blue-400 hover:text-blue-300">← Kembali</button>
-        <h2 class="text-3xl font-bold glow-text mb-8 text-blue-500 text-center">Hubungi Kami</h2>
+    <!-- 2. HALAMAN KONTAK (DEV, OWNER, & GRUP JB) -->
+    <div id="contact-page" class="max-w-md mx-auto hidden-section">
+        <button onclick="showSection('main-page')" class="mb-6 text-blue-400 font-semibold">← Kembali</button>
+        <h2 class="text-2xl font-brand glow-blue mb-8 text-center">Hubungi Kami</h2>
         
-        <div class="space-y-6">
-            <div class="p-6 bg-zinc-900 rounded-xl glow-border flex justify-between items-center">
+        <div class="space-y-4">
+            <!-- Developer -->
+            <div class="p-5 card-neon rounded-2xl flex justify-between items-center">
                 <div>
-                    <h3 class="text-xl font-bold">Developer</h3>
-                    <p class="text-sm text-gray-400">Hubungi untuk masalah teknis</p>
+                    <h3 class="font-bold text-white">Developer</h3>
+                    <p class="text-[10px] text-gray-500 uppercase tracking-wider">Masalah Teknis</p>
                 </div>
-                <a href="https://wa.me/6281997149736?text=bg+mau+order+:)" target="_blank" class="px-6 py-2 bg-green-600 rounded-lg btn-glow">Chat Dev</a>
+                <a href="https://wa.me+:)" target="_blank" class="px-5 py-2 btn-wa rounded-xl text-sm font-bold text-white shadow-md active:scale-95 transition">Chat Dev</a>
             </div>
 
-            <div class="p-6 bg-zinc-900 rounded-xl glow-border flex justify-between items-center">
+            <!-- Owner -->
+            <div class="p-5 card-neon rounded-2xl flex justify-between items-center">
                 <div>
-                    <h3 class="text-xl font-bold">Owner</h3>
-                    <p class="text-sm text-gray-400">Hubungi untuk kerjasama/order</p>
+                    <h3 class="font-bold text-white">Owner</h3>
+                    <p class="text-[10px] text-gray-500 uppercase tracking-wider">Order / Kerjasama</p>
                 </div>
-                <a href="https://wa.me/628179639917?text=kak+mau+order+:)" target="_blank" class="px-6 py-2 bg-green-600 rounded-lg btn-glow">Chat Owner</a>
+                <a href="https://wa.me+:)" target="_blank" class="px-5 py-2 btn-wa rounded-xl text-sm font-bold text-white shadow-md active:scale-95 transition">Chat Owner</a>
+            </div>
+
+            <!-- Grup JB -->
+            <div class="p-5 card-neon rounded-2xl flex justify-between items-center border-dashed border-cyan-500/50">
+                <div>
+                    <h3 class="font-bold text-cyan-400">Grup JB</h3>
+                    <p class="text-[10px] text-gray-500 uppercase tracking-wider">Komunitas Jual Beli</p>
+                </div>
+                <!-- GANTI LINK DI BAWAH INI DENGAN LINK GRUP WA KAMU -->
+                <a href="https://whatsapp.com" target="_blank" class="px-7 py-2 btn-grup rounded-xl text-sm font-bold text-white shadow-md active:scale-95 transition">Join</a>
             </div>
         </div>
     </div>
 
-    <!-- HALAMAN PRODUK -->
-    <div id="product-page" class="max-w-5xl mx-auto mt-10 hidden-section">
-        <button onclick="showSection('main-page')" class="mb-6 text-blue-400 hover:text-blue-300">← Kembali</button>
-        <h2 class="text-3xl font-bold glow-text mb-8 text-blue-500">Daftar Layanan</h2>
+    <!-- 3. HALAMAN KATEGORI PRODUK -->
+    <div id="product-page" class="max-w-md mx-auto hidden-section">
+        <button onclick="showSection('main-page')" class="mb-6 text-blue-400 font-semibold">← Kembali</button>
+        <h2 class="text-2xl font-brand glow-blue mb-8">Daftar Layanan</h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Template Card Produk (Bisa Kamu Copy-Paste) -->
-            <div class="p-5 bg-zinc-900 rounded-xl glow-border">
-                <h3 class="text-lg font-bold mb-2">Aplikasi Premium</h3>
-                <p class="text-sm text-gray-400 mb-4">Netflix, Spotify, Canva, dll.</p>
-                <button onclick="showPayment()" class="w-full py-2 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-500 hover:text-white transition">Lihat Produk</button>
+        <div class="grid grid-cols-1 gap-4">
+            <div class="p-5 card-neon rounded-2xl">
+                <h3 class="text-lg font-bold mb-1 text-white">Aplikasi Premium</h3>
+                <p class="text-xs text-gray-500 mb-4">Netflix, Spotify, Canva, dll.</p>
+                <button onclick="showPricing('Aplikasi Premium', '• Netflix UHD: Rp 15.000\n• Spotify Prem: Rp 10.000\n• Canva Pro: Rp 5.000\n• YouTube Prem: Rp 8.000')" class="w-full py-2 border border-blue-500/50 text-blue-400 rounded-xl font-medium hover:bg-blue-600 hover:text-white transition">Lihat Produk</button>
             </div>
             
-            <div class="p-5 bg-zinc-900 rounded-xl glow-border">
-                <h3 class="text-lg font-bold mb-2">Kebutuhan Sosmed</h3>
-                <p class="text-sm text-gray-400 mb-4">Followers, Likes, Views, dll.</p>
-                <button onclick="showPayment()" class="w-full py-2 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-500 hover:text-white transition">Lihat Produk</button>
+            <div class="p-5 card-neon rounded-2xl">
+                <h3 class="text-lg font-bold mb-1 text-white">Top Up Games</h3>
+                <p class="text-xs text-gray-500 mb-4">MLBB, FF, PUBG, dll.</p>
+                <button onclick="showPricing('Top Up Games', '• MLBB 86 DM: Rp 20.000\n• FF 100 DM: Rp 15.000\n• PUBG 60 UC: Rp 12.000')" class="w-full py-2 border border-blue-500/50 text-blue-400 rounded-xl font-medium hover:bg-blue-600 hover:text-white transition">Lihat Produk</button>
             </div>
 
-            <div class="p-5 bg-zinc-900 rounded-xl glow-border">
-                <h3 class="text-lg font-bold mb-2">Top Up Games</h3>
-                <p class="text-sm text-gray-400 mb-4">MLBB, FF, PUBG, dll.</p>
-                <button onclick="showPayment()" class="w-full py-2 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-500 hover:text-white transition">Lihat Produk</button>
-            </div>
-            <!-- Tambahkan kategori lain sesuai keinginanmu di sini -->
-        </div>
-
-        <!-- Tombol Payment Global -->
-        <div class="mt-12 text-center">
-            <button onclick="showPayment()" class="px-12 py-3 bg-blue-600 rounded-full font-bold text-lg btn-glow shadow-lg">PAYMENT METHOD</button>
+            <!-- Kamu bisa tambah kategori lain di sini tinggal copy paste card di atas -->
         </div>
     </div>
 
-    <!-- MODAL PAYMENT -->
-    <div id="payment-modal" class="fixed inset-0 bg-black bg-opacity-80 hidden-section flex items-center justify-center p-4 z-50">
-        <div class="bg-zinc-900 p-8 rounded-2xl max-w-md w-full glow-border relative text-center">
-            <button onclick="closePayment()" class="absolute top-4 right-4 text-gray-400 hover:text-white">✕</button>
-            <h2 class="text-2xl font-bold mb-6 text-blue-400">Metode Pembayaran</h2>
+    <!-- 4. HALAMAN DAFTAR HARGA -->
+    <div id="price-page" class="max-w-md mx-auto hidden-section">
+        <button onclick="showSection('product-page')" class="mb-6 text-blue-400 font-semibold">← Kembali</button>
+        <div class="card-neon p-6 rounded-3xl">
+            <h2 id="price-title" class="text-xl font-brand text-blue-400 mb-4">Judul Produk</h2>
+            <div id="price-list" class="whitespace-pre-line text-sm text-gray-300 bg-black/40 p-5 rounded-2xl mb-8 border border-white/5 leading-loose">
+                <!-- List Harga -->
+            </div>
+            <button onclick="showPayment()" class="w-full py-4 bg-blue-600 rounded-2xl font-bold text-lg shadow-lg active:scale-95 transition">BELI & BAYAR</button>
+        </div>
+    </div>
+
+    <!-- 5. MODAL PAYMENT (QRIS) -->
+    <div id="payment-modal" class="fixed inset-0 bg-black/95 hidden-section flex items-center justify-center p-6 z-50">
+        <div class="bg-zinc-900 p-8 rounded-[2rem] max-w-sm w-full border border-blue-500/30 text-center relative shadow-2xl">
+            <button onclick="closePayment()" class="absolute top-5 right-5 text-gray-500 text-2xl hover:text-white transition">✕</button>
+            <h2 class="text-lg font-brand mb-6 text-blue-400">Metode Pembayaran</h2>
             
-            <!-- Link QRIS Kamu -->
-            <div class="bg-white p-2 rounded-lg mb-6 inline-block">
-                <img src="https://files.catbox.moe/3ckjs7.jpg" alt="QRIS" class="w-48 h-48">
+            <div class="bg-white p-3 rounded-2xl mb-6 inline-block shadow-inner">
+                <img src="https://co.com" alt="QRIS" class="qris-img">
             </div>
 
-            <div class="text-left space-y-2 text-gray-300">
+            <div class="text-left text-sm space-y-3 text-gray-300 mb-6 bg-black/20 p-4 rounded-xl">
                 <div class="flex justify-between border-b border-zinc-800 pb-2">
-                    <span>Dana:</span> <span class="text-white font-mono">08179639917</span>
+                    <span class="text-gray-500">Dana:</span> <span class="font-bold">08179639917</span>
                 </div>
-                <div class="flex justify-between border-b border-zinc-800 pb-2">
-                    <span>OVO/Gopay:</span> <span class="text-white font-mono">-</span>
-                </div>
-                <div class="flex justify-between border-b border-zinc-800 pb-2">
-                    <span>Bank:</span> <span class="text-white font-mono">-</span>
+                <div class="flex justify-between">
+                    <span class="text-gray-500">OVO:</span> <span class="font-bold">08179639917</span>
                 </div>
             </div>
-            <p class="mt-6 text-xs text-gray-500 italic">*Silahkan screenshot bukti transfer dan kirim ke Owner/Developer</p>
+            <p class="text-[10px] text-gray-500 italic leading-relaxed uppercase tracking-widest">Screenshot bukti transfer & kirim ke Owner</p>
         </div>
     </div>
 
     <script>
         function showSection(id) {
-            // Sembunyikan semua section
             document.getElementById('main-page').classList.add('hidden-section');
             document.getElementById('contact-page').classList.add('hidden-section');
             document.getElementById('product-page').classList.add('hidden-section');
+            document.getElementById('price-page').classList.add('hidden-section');
             
-            // Tampilkan yang dipilih
             document.getElementById(id).classList.remove('hidden-section');
             window.scrollTo(0, 0);
+        }
+
+        function showPricing(title, list) {
+            document.getElementById('price-title').innerText = title;
+            document.getElementById('price-list').innerText = list;
+            showSection('price-page');
         }
 
         function showPayment() {
