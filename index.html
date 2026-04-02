@@ -4,27 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foxxy & Uwaw Store</title>
+    <!-- Ganti script Tailwind dengan versi ini -->
     <script src="https://tailwindcss.com"></script>
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
+        /* CSS Cadangan jika Tailwind telat load */
         body {
+            background-color: #0a0a0a !important;
+            color: white;
             font-family: 'Poppins', sans-serif;
-            background-color: #0a0a0a;
-            color: #ffffff;
+            margin: 0;
+            padding: 20px;
         }
         .glow-text {
-            text-shadow: 0 0 10px rgba(59, 130, 246, 0.8), 0 0 20px rgba(59, 130, 246, 0.4);
+            color: #3b82f6;
+            text-shadow: 0 0 15px rgba(59, 130, 246, 0.9);
         }
         .glow-border {
-            border: 1px solid rgba(59, 130, 246, 0.5);
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
-        }
-        .btn-glow:hover {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
-            transform: translateY(-2px);
-            transition: all 0.3s ease;
+            border: 1px solid #3b82f6 !important;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #18181b;
         }
         .hidden-section { display: none; }
+        button {
+            background: #2563eb;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body class="min-h-screen p-6 md:p-12">
